@@ -6,11 +6,13 @@ This is a simple Django web application with a PostgreSQL database, built for th
 
 -----
 
-## Features
+## Task Requirements Met
 
-1.  **CRUD API:** A full CRUD API for managing "Bookmarks" (`/api/bookmarks/`).
-2.  **3rd Party API:** An endpoint that fetches data from an external API (`/api/external-users/`).
-3.  **Data Visualization:** A simple bar chart showing the priorities of all saved bookmarks (`/api/chart/`).
+This project fulfills the core requirements of the demo task:
+
+1.  **CRUD Functionality:** A full REST API with Create, Read, Update, and Delete functionality is available for "Bookmarks" at the `/api/bookmarks/` endpoint.
+2.  **API Integration:** The requirement "At least one API integration example" is met. The endpoint `/api/external-users/` pulls live data from the public `jsonplaceholder` third-party API.
+3.  **Data Visualization:** A simple data visualization feature is available at `/api/chart/`, which renders a bar chart of bookmark priorities retrieved from the database.
 
 -----
 
@@ -18,9 +20,71 @@ This is a simple Django web application with a PostgreSQL database, built for th
 
   * `GET, POST /api/bookmarks/`: List all bookmarks or create a new one.
   * `GET, PUT, PATCH, DELETE /api/bookmarks/{id}/`: Read, update, or delete a specific bookmark.
-  * `GET /api/external-users/`: Fetches sample user data from `jsonplaceholder`.
-  * `GET /api/chart/`: Renders the HTML page with the data visualization.
+  * `GET /api/external-users/`: **(3rd-Party API Integration)** Fetches sample user data from `jsonplaceholder`.
+  * `GET /api/chart/`: **(Visualization)** Renders the HTML page with the data visualization.
   * `GET /api/chart-data/`: The internal API that provides data to the chart.
+
+-----
+
+## How to Perform CRUD Operations
+
+You can use any API client (like Postman, Insomnia) or `curl` to interact with the live API.
+
+**Note:** Replace `https-live-url` with `https://darshan-project-app.onrender.com` for the live app, or `http://127.0.0.1:8000` for local testing.
+
+### Create (POST)
+
+Create a new bookmark.
+
+```bash
+curl -X POST \
+  https-live-url/api/bookmarks/ \
+  -H 'Content-Type: application/json' \
+  -d '{
+        "title": "Google",
+        "url": "https://google.com",
+        "priority": 1
+    }'
+```
+
+### Read (List - GET)
+
+Get a list of all bookmarks.
+
+```bash
+curl -X GET https-live-url/api/bookmarks/
+```
+
+### Read (Detail - GET)
+
+Get a single bookmark by its ID (e.g., ID 1).
+
+```bash
+curl -X GET https-live-url/api/bookmarks/1/
+```
+
+### Update (PUT)
+
+Update an existing bookmark (e.g., ID 1).
+
+```bash
+curl -X PUT \
+  https-live-url/api/bookmarks/1/ \
+  -H 'Content-Type: application/json' \
+  -d '{
+        "title": "Google Search",
+        "url": "httpsS://google.com",
+        "priority": 2
+    }'
+```
+
+### Delete (DELETE)
+
+Delete an existing bookmark (e.g., ID 1).
+
+```bash
+curl -X DELETE https-live-url/api/bookmarks/1/
+```
 
 -----
 
