@@ -1,0 +1,9 @@
+# Virtual Environment
+venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# OS files (like .DS_Store on Mac)
+.DS_Store
