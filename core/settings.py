@@ -28,6 +28,8 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'a-strong-default-key-for-local-use-on
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# Set to False for deployment, True for local development
+DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 
 ALLOWED_HOSTS = ['127.0.0.1', '.onrender.com']
